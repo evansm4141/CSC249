@@ -7,6 +7,8 @@
 #include <string>
 using namespace std;
 
+static const bool DEBUG = true; //if true, print DEBUG strings
+
 //Implement the Selection Sort algorithm as listed in Zybooks 3.3.1
 //check out https://sortvisualizer.com/selectionsort
 
@@ -20,18 +22,24 @@ void SelectionSort(int* numbers, int numbersSize) {
       for (int j = i + 1; j < numbersSize; j++) {
          if (numbers[j] < numbers[indexSmallest]) {
             indexSmallest = j;
-           cout << "\n\tsmallest: " << numbers[j];
-           cout << " @ " << j << endl;
+            if (DEBUG) {
+                cout << "\n\tsmallest: " << numbers[j];
+                cout << " @ " << j << endl;
+            }
          }
       }
       // Swap numbers[i] and numbers[indexSmallest]
-     cout << "\t\tswap positions " << i;
-     cout << " and " << indexSmallest << endl;
+     if (DEBUG) {
+        cout << "\t\tswap positions " << i;
+        cout << " and " << indexSmallest << endl;
+     }
       int temp = numbers[i];
       numbers[i] = numbers[indexSmallest];
       numbers[indexSmallest] = temp;
      //show sorted array
-     cout << "\tPART_SORTED: " << ArrayToString(numbers, numbersSize) << endl;
+     if (DEBUG) {
+        cout << "\tPART_SORTED: " << ArrayToString(numbers, numbersSize) << endl;
+     }
    }
 }
 
