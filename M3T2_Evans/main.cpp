@@ -3,7 +3,7 @@
 //Melody Evans
 //2-16-23
 
-/* As with M3T1, but take the implementation from 3.5 (Insertion Sort)
+/* Similar to M3T1, but take the implementation from 3.5 (Insertion Sort)
 Then, add debug print (or cout) statements that illustrate what is happening for each pass through the algorithm. */
 //https://sortvisualizer.com/selectionsort
 
@@ -11,15 +11,25 @@ Then, add debug print (or cout) statements that illustrate what is happening for
 #include <string>
 using namespace std;
 
-void InsertionSort(int* numbers, int numbersSize) {
-   for (int i = 1; i < numbersSize; i++) {
+static int COMPARES = 0;
+static int SWAPS = 0;
+const bool DEBUG = true;
+
+void InsertionSort(int* numArray, int numArray_Size) {
+   for (int i = 1; i < numArray_Size; i++) {
       int j = i;
-      while (j > 0 && numbers[j] < numbers[j - 1]) {
-         // Swap numbers[j] and numbers [j - 1]
-         int temp = numbers[j];
-         numbers[j] = numbers[j - 1];
-         numbers[j - 1] = temp;
+      COMPARES++; //next line is a compare, whether True or False
+      while (j > 0 && numArray[j] < numArray[j - 1]) {
+         // Swap numArray[j] and numArray [j - 1]
+         SWAPS++;
+         int temp = numArray[j];
+         numArray[j] = numArray[j - 1];
+         numArray[j - 1] = temp;
          j--;
+         if (DEBUG) {
+            cout << "\t" << "swapped elements " numArray[j] << " and " << numArray[j-1] << endl;
+            cout << "\tPART_SORTED: " << ArrayToString(numArray, numArray_Size) << endl;
+         }
       }
    }
 }
@@ -46,16 +56,16 @@ string ArrayToString(int* array, int arraySize) {
 
 int main() {
   cout << "M3T2: Insertion Sort\n\n";
-   // Create an array of numbers to sort
-   int numbers[] = { 10, 2, 78, 4, 45, 32, 7, 11 };
-   int numbersSize = sizeof(numbers) / sizeof(numbers[0]);
+   // Create an array of numArray to sort
+   int numArray[] = { 10, 2, 78, 4, 45, 32, 7, 11 };
+   int numArray_Size = sizeof(numArray) / sizeof(numArray[0]);
 
    // Display the contents of the array
-   cout << "UNSORTED: " << ArrayToString(numbers, numbersSize) << endl;
+   cout << "UNSORTED: " << ArrayToString(numArray, numArray_Size) << endl;
 
    // Call the InsertionSort function
-   InsertionSort(numbers, numbersSize);
+   InsertionSort(numArray, numArray_Size);
 
    // Display the sorted contents of the array
-   cout << "SORTED:   " << ArrayToString(numbers, numbersSize) << endl;
+   cout << "SORTED:   " << ArrayToString(numArray, numArray_Size) << endl;
 }
