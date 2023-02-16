@@ -7,61 +7,64 @@
 #include <string>
 using namespace std;
 
-void Merge(int* numbers, int leftFirst, int leftLast, int rightLast) {
+//declare function, just in case
+string ArrayToString(int* array, int arraySize);
+
+void Merge(int* numArray, int leftFirst, int leftLast, int rightLast) {
    int mergedSize = rightLast - leftFirst + 1;       // Size of merged partition
    int* mergedNumbers = new int[mergedSize]; // Dynamically allocates temporary
-                                             // array for merged numbers
+                                             // array for merged numArray
    int mergePos = 0;                         // Position to insert merged number
    int leftPos = leftFirst;                  // Initialize left partition position
    int rightPos = leftLast + 1;              // Initialize right partition position
 
-   // Add smallest element from left or right partition to merged numbers
+   // Add smallest element from left or right partition to merged numArray
    while (leftPos <= leftLast && rightPos <= rightLast) {
-      if (numbers[leftPos] <= numbers[rightPos]) {
-         mergedNumbers[mergePos] = numbers[leftPos];
+      if (numArray[leftPos] <= numArray[rightPos]) {
+         mergedNumbers[mergePos] = numArray[leftPos];
          leftPos++;
       }
       else {
-         mergedNumbers[mergePos] = numbers[rightPos];
+         mergedNumbers[mergePos] = numArray[rightPos];
          rightPos++;
       }
       mergePos++;
    }
 
-   // If left partition is not empty, add remaining elements to merged numbers
+   // If left partition is not empty, add remaining elements to merged numArray
    while (leftPos <= leftLast) {
-      mergedNumbers[mergePos] = numbers[leftPos];
+      mergedNumbers[mergePos] = numArray[leftPos];
       leftPos++;
       mergePos++;
    }
 
-   // If right partition is not empty, add remaining elements to merged numbers
+   // If right partition is not empty, add remaining elements to merged numArray
    while (rightPos <= rightLast) {
-      mergedNumbers[mergePos] = numbers[rightPos];
+      mergedNumbers[mergePos] = numArray[rightPos];
       rightPos++;
       mergePos++;
    }
 
-   // Copy merged numbers back to numbers
+   // Copy merged numArray back to numArray
    for (mergePos = 0; mergePos < mergedSize; mergePos++) {
-      numbers[leftFirst + mergePos] = mergedNumbers[mergePos];
+      numArray[leftFirst + mergePos] = mergedNumbers[mergePos];
    }
 
    // Free temporary array
    delete[] mergedNumbers;
 }
 
-void MergeSort(int* numbers, int startIndex, int endIndex) {
+void MergeSort(int* numArray, int startIndex, int endIndex) {
    if (startIndex < endIndex) {
       // Find the midpoint in the partition
       int mid = (startIndex + endIndex) / 2;
 
       // Recursively sort left and right partitions
-      MergeSort(numbers, startIndex, mid);
-      MergeSort(numbers, mid + 1, endIndex);
+      MergeSort(numArray, startIndex, mid);
+      MergeSort(numArray, mid + 1, endIndex);
 
       // Merge left and right partition in sorted order
-      Merge(numbers, startIndex, mid, endIndex);
+      Merge(numArray, startIndex, mid, endIndex);
    }
 }
 
@@ -86,16 +89,16 @@ string ArrayToString(int* array, int arraySize) {
 }
 
 int main() {
-   // Create an array of numbers to sort
-   int numbers[] = { 61, 76, 19, 4, 94, 32, 27, 83, 58 };
-   int numbersSize = sizeof(numbers) / sizeof(numbers[0]);
+   // Create an array of numArray to sort
+   int numArray[] = { 61, 76, 19, 4, 94, 32, 27, 83, 58 };
+   int numArray_Size = sizeof(numArray) / sizeof(numArray[0]);
 
    // Display the contents of the array
-   cout << "UNSORTED: " << ArrayToString(numbers, numbersSize) << endl;
+   cout << "UNSORTED: " << ArrayToString(numArray, numArray_Size) << endl;
 
    // Call the MergeSort function
-   MergeSort(numbers, 0, numbersSize - 1);
+   MergeSort(numArray, 0, numArray_Size - 1);
 
    // Display the sorted contents of the array
-   cout << "SORTED:   " << ArrayToString(numbers, numbersSize) << endl;
+   cout << "SORTED:   " << ArrayToString(numArray, numArray_Size) << endl;
 }
