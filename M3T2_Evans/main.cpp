@@ -15,20 +15,23 @@ static int COMPARES = 0;
 static int SWAPS = 0;
 const bool DEBUG = true;
 
+string ArrayToString(int* array, int arraySize);
+
 void InsertionSort(int* numArray, int numArray_Size) {
    for (int i = 1; i < numArray_Size; i++) {
       int j = i;
       COMPARES++; //next line is a compare, whether True or False
       while (j > 0 && numArray[j] < numArray[j - 1]) {
-         // Swap numArray[j] and numArray [j - 1]
+         // Swap numArray[j] and numArray[j - 1]
          SWAPS++;
          int temp = numArray[j];
          numArray[j] = numArray[j - 1];
          numArray[j - 1] = temp;
          j--;
          if (DEBUG) {
-            cout << "\t" << "swapped elements " numArray[j] << " and " << numArray[j-1] << endl;
+            cout << "\t" << "swap" << SWAPS << ": elements " << numArray[j] << " and " << numArray[j-1] << endl;
             cout << "\tPART_SORTED: " << ArrayToString(numArray, numArray_Size) << endl;
+            cout << "\t" << "compares: " << COMPARES << endl;
          }
       }
    }
@@ -68,4 +71,6 @@ int main() {
 
    // Display the sorted contents of the array
    cout << "SORTED:   " << ArrayToString(numArray, numArray_Size) << endl;
+   cout << "Total swaps: " << SWAPS << endl;
+   cout << "Total compares: " << COMPARES << endl;
 }
