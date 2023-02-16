@@ -7,6 +7,9 @@
 #include <string>
 using namespace std;
 
+//rename numbers > numArray
+//rename numbersSize > numArray_Size
+
 //declare function, just in case
 string ArrayToString(int* array, int arraySize);
 
