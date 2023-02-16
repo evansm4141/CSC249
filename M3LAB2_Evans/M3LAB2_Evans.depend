@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1676564717 source:c:\dev\github\csc249\csc249\m3lab2_evans\main.cpp
+	<iostream>
+	<string>
+
