@@ -15,6 +15,7 @@ static int COMPARES = 0;
 static int SWAPS = 0;
 const bool DEBUG = true;
 
+//declare function
 string ArrayToString(int* array, int arraySize);
 
 void InsertionSort(int* numArray, int numArray_Size) {
