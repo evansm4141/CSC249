@@ -96,6 +96,7 @@ void MergeSort(int* numArray, int startIndex, int endIndex) {
 
       // Merge left and right partition in sorted order
       Merge(numArray, startIndex, mid, endIndex);
+
       //DEBUG statement
       if (DEBUG) {
         cout << "Operations so far: ";
