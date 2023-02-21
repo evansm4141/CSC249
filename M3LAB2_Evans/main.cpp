@@ -1,7 +1,7 @@
 //CSC 249
 //M3LAB2
 //Melody Evans
-//2-16-23
+//2-21-23
 
 #include <iostream>
 #include <string>
@@ -92,6 +92,8 @@ string ArrayToString(int* array, int arraySize) {
 }
 
 int main() {
+   cout << "M3LAB2 - Merge Sort\n\n";
+
    // Create an array of numArray to sort
    int numArray[] = { 61, 76, 19, 4, 94, 32, 27, 83, 58 };
    int numArray_Size = sizeof(numArray) / sizeof(numArray[0]);
