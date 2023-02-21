@@ -7,50 +7,51 @@
 #include <string>
 using namespace std;
 
-//rename numbers > numArray
-//rename numbersSize > numArray_Size
+//renamed numbers > numArray, numbersSize > numArray_Size
+//renamed leftPos, rightPos, mergePos > left_Pos, right_Pos, merge_Pos
+//renamed leftFirst, leftLast, rightLast > left_First, left_Last, right_Last
 
 //declare function, just in case
 string ArrayToString(int* array, int arraySize);
 
-void Merge(int* numArray, int leftFirst, int leftLast, int rightLast) {
-   int mergedSize = rightLast - leftFirst + 1;       // Size of merged partition
+void Merge(int* numArray, int left_First, int left_Last, int right_Last) {
+   int mergedSize = right_Last - left_First + 1;       // Size of merged partition
    int* mergedNumbers = new int[mergedSize]; // Dynamically allocates temporary
                                              // array for merged numArray
-   int mergePos = 0;                         // Position to insert merged number
-   int leftPos = leftFirst;                  // Initialize left partition position
-   int rightPos = leftLast + 1;              // Initialize right partition position
+   int merge_Pos = 0;                         // Position to insert merged number
+   int left_Pos = left_First;                  // Initialize left partition position
+   int right_Pos = left_Last + 1;              // Initialize right partition position
 
    // Add smallest element from left or right partition to merged numArray
-   while (leftPos <= leftLast && rightPos <= rightLast) {
-      if (numArray[leftPos] <= numArray[rightPos]) {
-         mergedNumbers[mergePos] = numArray[leftPos];
-         leftPos++;
+   while (left_Pos <= left_Last && right_Pos <= right_Last) {
+      if (numArray[left_Pos] <= numArray[right_Pos]) {
+         mergedNumbers[merge_Pos] = numArray[left_Pos];
+         left_Pos++;
       }
       else {
-         mergedNumbers[mergePos] = numArray[rightPos];
-         rightPos++;
+         mergedNumbers[merge_Pos] = numArray[right_Pos];
+         right_Pos++;
       }
-      mergePos++;
+      merge_Pos++;
    }
 
    // If left partition is not empty, add remaining elements to merged numArray
-   while (leftPos <= leftLast) {
-      mergedNumbers[mergePos] = numArray[leftPos];
-      leftPos++;
-      mergePos++;
+   while (left_Pos <= left_Last) {
+      mergedNumbers[merge_Pos] = numArray[left_Pos];
+      left_Pos++;
+      merge_Pos++;
    }
 
    // If right partition is not empty, add remaining elements to merged numArray
-   while (rightPos <= rightLast) {
-      mergedNumbers[mergePos] = numArray[rightPos];
-      rightPos++;
-      mergePos++;
+   while (right_Pos <= right_Last) {
+      mergedNumbers[merge_Pos] = numArray[right_Pos];
+      right_Pos++;
+      merge_Pos++;
    }
 
    // Copy merged numArray back to numArray
-   for (mergePos = 0; mergePos < mergedSize; mergePos++) {
-      numArray[leftFirst + mergePos] = mergedNumbers[mergePos];
+   for (merge_Pos = 0; merge_Pos < mergedSize; merge_Pos++) {
+      numArray[left_First + merge_Pos] = mergedNumbers[merge_Pos];
    }
 
    // Free temporary array
