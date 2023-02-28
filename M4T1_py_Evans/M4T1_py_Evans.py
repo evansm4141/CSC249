@@ -10,21 +10,18 @@ LinkedList consists of:
 // node and pointer collection of Node objects
 // pointer to head and tail
 // methods to access and mutate the list
-Notes: 
-Copilot has gotten stupider -- it was of zero help here.
-Examples from  Lambert, Fundamentals of Data Structures in Python
 """
 
 class Node:
-    """ Represents a singly linked node"""
+    # Represents a singly linked node
     def __init__(self, data=None, next=None):
-        """ Instantiates a Node with None as default next """
+        # Instantiates a Node with None as default next
         self.data = data
         self.next = None
         
 class LinkedList:
     def __init__(self):
-        """ Instantiates an empty linkedlist"""
+        # Instantiates an empty linked list
         self.head = None   # pointer to head
         self.tail = None   # pointer to tail
         
