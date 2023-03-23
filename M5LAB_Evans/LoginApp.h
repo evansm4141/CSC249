@@ -31,8 +31,8 @@ class LoginApp {
     // member variables
     map <string, User> user_map;
     // member functions
-    User login();
-    User register_account();    // register is a reserved word in c++
+    User login(string name, string password);
+    User register_account(string name, string password);    // register is a reserved word in c++
     User change_password(User acct, string new_password);
     // unimplemented
     // void save_data();
