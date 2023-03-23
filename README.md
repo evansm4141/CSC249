@@ -7,5 +7,6 @@ Data Structures & Algorithms
 - M3T2 - Merge Sort
 - M3LAB2
 - M4T1 - Singly Linked Lists
+- M5LAB - Hashing and Salting
 
 Last edit 2/16/23
