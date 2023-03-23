@@ -27,9 +27,6 @@ class LoginApp {
     ~LoginApp();
     void menu();      // entry point to app
 
-  private:
-    // member variables
-    map <string, User> user_map;
     // member functions
     User login(string name, string password);
     User register_account(string name, string password);    // register is a reserved word in c++
@@ -38,9 +35,14 @@ class LoginApp {
     // void save_data();
     // void load_data();
 
+  private:
+    // member variables
+    map <string, User> user_map;
+
 };
 
 LoginApp::LoginApp() {
+    //start with demo user
 
 }
 
@@ -48,4 +50,19 @@ LoginApp::~LoginApp() {
 
 }
 
+User LoginAPP::login(string name, string password) {
+    //input: name, password
+    //output: User object (empty if login failed)
+    User dummy = User();
+    //test code
+    if (name == "admin" && password == "password") {
+        User good_user = User();
+        good_user.username = "admin";
+        good_user.password = "password";
+        return good_user;
+    }
+    else {
+        return dummy;
+    }
+}
 #endif // LOGIN_APP_H
