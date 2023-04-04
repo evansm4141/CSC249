@@ -45,16 +45,20 @@ class RunwayReserver {
         bool add(Plane p, double t) {
             // add plane p in order at time t
             // return true if successful, false otherwise
-            // in debug mode, check RI each time
+            p.SetlandingTime(t);
+            //add plane to internal vector
+            m_planes.push_back(p);
+            //update plane's internal time
+            //p.SetlandingTime(t);
+            //in debug mode, check RI each time
             if (DEBUG) {
                 bool check = checkRI();
                 if (!check) {
                     cout << "Error: Representational Invariant is FALSE\n";
+                    //NOTE: plane's landing time is possibly invalid
                     return false;
                 }
             }
-            //update plane's internal time
-            p.SetlandingTime(t);
             return false; // unimplemented
         }
 
@@ -68,6 +72,12 @@ class RunwayReserver {
 
         Plane* lookup(double t) {
             // find plane at time t if it exists, nullptr otherwise
+            for (auto plane: m_planes) {
+                if (plane.GetlandingTime() == t) {
+                    cout << "plane " << plane.Getcallsign() << " found at t=" << t << endl;
+                    return &plane; //reference pointer
+                }
+            }
             return nullptr; // unimplemented
         }
 
@@ -75,11 +85,24 @@ class RunwayReserver {
 
     private:
         double m_landingWindow; //!< Member variable "m_landingWindow"
-
+        vector<Plane> m_planes;
         bool checkRI() {
             // Check Representational Invariant
             // (assert that the data structure is still valid)
             // when debugging, we should do this after every update (add/remove)
+            //TODO
+            double last_time = 0.0;
+            for (auto plane : m_planes) {
+                double current_time = plane.GetlandingTime();
+                cout << plane.Getcallsign() << " " << current_time << endl;
+                if ((current_time < last_time) {
+                    cout << "RI invalid -- planes not sorted\n";
+                    return false;
+                }
+                else {
+                    last_time = current_time;
+                }
+            }
             return false; // unimplemented
         }
 };

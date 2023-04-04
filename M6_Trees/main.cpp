@@ -8,8 +8,22 @@ int main() {
 
     RunwayReserver rrs = RunwayReserver();
     Plane myPlane = Plane("N12345");
-    bool result = rrs.add(myPlane, 10.0);
-    cout << result << endl;
+
+    double t = 10.0; //landing time
+    cout << "adding " << myPlane.Getcallsign() << " at time=" << t << endl;
+    bool result = rrs.add(myPlane, t);
+    cout << "add result = " << result << endl;
+    //bool result = rrs.add(myPlane, 10.0);
+    //cout << result << endl;
+    cout << endl;
+    cout << "Lookup of t=" << t << ":";
+    Plane* p = rrs.lookup(t);
+    if (p != nullptr) {
+        cout << p->Getcallsign() << endl;
+    }
+    else {
+        cout << "Not found\n";
+    }
 
     return 0;
 }
