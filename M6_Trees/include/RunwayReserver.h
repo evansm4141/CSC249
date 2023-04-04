@@ -3,8 +3,6 @@
 #import <vector>
 using namespace std;
 
-
-
 /*
 RunwayReserver is the main entry point to the Runway Reservation System.
 Our aim is to implement the same interface with multiple data structures
@@ -15,6 +13,7 @@ subclassing a virtual RRS with for example VectorRRS, BSTRRS, etc.
 
 we are treating time as a double -- presumably it is in minutes.
 */
+
 class RunwayReserver
 {
     public:

@@ -1,8 +1,6 @@
 #include <iostream>
 #include "Plane.h"
 #include "RunwayReserver.h"
-
-
 using namespace std;
 
 int main()

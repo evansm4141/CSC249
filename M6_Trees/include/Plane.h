@@ -1,6 +1,5 @@
 #ifndef PLANE_H
 #define PLANE_H
-
 using namespace std;
 
 class Plane
@@ -21,11 +20,11 @@ class Plane
         /** Access m_landingTime
          * \return The current value of m_landingTime
          */
-        unsigned int GetlandingTime() { return m_landingTime; }
+        double GetlandingTime() { return m_landingTime; }
         /** Set m_landingTime
          * \param val New value to set
          */
-        void SetlandingTime(unsigned int val) { m_landingTime = val; }
+        void SetlandingTime(double val) { m_landingTime = val; }
         /** Access m_callsign
          * \return The current value of m_callsign
          */
@@ -38,7 +37,7 @@ class Plane
     protected:
 
     private:
-        unsigned int m_landingTime; //!< Member variable "m_landingTime"
+        double m_landingTime; //!< Member variable "m_landingTime"
         string m_callsign; //!< Member variable "m_callsign"
 };
 
