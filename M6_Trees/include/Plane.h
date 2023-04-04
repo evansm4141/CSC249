@@ -2,8 +2,7 @@
 #define PLANE_H
 using namespace std;
 
-class Plane
-{
+class Plane {
     public:
         /** Default constructor */
         Plane() {
