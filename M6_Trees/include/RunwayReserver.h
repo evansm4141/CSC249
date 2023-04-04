@@ -14,8 +14,8 @@ subclassing a virtual RRS with for example VectorRRS, BSTRRS, etc.
 we are treating time as a double -- presumably it is in minutes.
 */
 
-class RunwayReserver
-{
+class RunwayReserver {
+    static const bool DEBUG = true;
     public:
         /** Default constructor */
         RunwayReserver() {
@@ -45,12 +45,24 @@ class RunwayReserver
         bool add(Plane p, double t) {
             // add plane p in order at time t
             // return true if successful, false otherwise
+            // in debug mode, check RI each time
+            if (DEBUG) {
+                bool check = checkRI();
+                if (!check) {
+                    cout << "Error: Representational Invariant is FALSE\n";
+                    return false;
+                }
+            }
+            //update plane's internal time
+            p.SetlandingTime(t);
             return false; // unimplemented
         }
 
         bool remove(double t) {
             // remove plane at time t
             // return true if successful, false otherwise
+            // set plane's internal time to 0
+            //TODO: if p exists, p.SetlandingTime(0)
             return false; // unimplemented
         }
 
@@ -59,17 +71,17 @@ class RunwayReserver
             return nullptr; // unimplemented
         }
 
+    protected:
+
+    private:
+        double m_landingWindow; //!< Member variable "m_landingWindow"
+
         bool checkRI() {
             // Check Representational Invariant
             // (assert that the data structure is still valid)
             // when debugging, we should do this after every update (add/remove)
             return false; // unimplemented
         }
-
-    protected:
-
-    private:
-        unsigned int m_landingWindow; //!< Member variable "m_landingWindow"
 };
 
 #endif // RUNWAYRESERVER_H
