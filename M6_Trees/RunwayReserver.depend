@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1680614977 source:c:\dev\github\csc249\m6-trees\runwayreservation\cpp\runwayreserver\main.cpp
+	<iostream>
+	"Plane.h"
+	"RunwayReserver.h"
+
+1680615013 c:\dev\github\csc249\m6-trees\runwayreservation\cpp\runwayreserver\include\plane.h
+
+1680615165 c:\dev\github\csc249\m6-trees\runwayreservation\cpp\runwayreserver\include\runwayreserver.h
+
