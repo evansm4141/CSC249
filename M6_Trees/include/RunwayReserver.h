@@ -15,7 +15,7 @@ we are treating time as a double -- presumably it is in minutes.
 */
 
 class RunwayReserver {
-    static const bool DEBUG = true;
+    static const bool DEBUG = false; //true;
     public:
         /** Default constructor */
         RunwayReserver() {
