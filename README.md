@@ -8,5 +8,6 @@ Data Structures & Algorithms
 - M3LAB2
 - M4T1 - Singly Linked Lists
 - M5LAB - Hashing and Salting
+- M6 - Trees
 
 Last edit 2/16/23
