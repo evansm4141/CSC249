@@ -7,3 +7,10 @@ to add it to your build enviroment
 2. Run `make run all` (tested on <a href="http://clang.org/">clang</a> v11.0.1)
 
 ![alt text](https://github.com/justinac0/raylib-raycaster/blob/main/example.png)
+
+
+CONTROLS:
+W - Forward
+S - Backward
+Q - Turn Right
+E - Turn Left
