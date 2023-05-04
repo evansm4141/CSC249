@@ -1,0 +1,62 @@
+start_at = ocean_beach
+
+## Defines locations in the world
+locations {
+   ocean_beach      : location "You are at your safehouse." ;
+   washington_beach : location "You are north of the safehouse." ;
+   starfish_isle    : location "You are near Diaz's mansion." ;
+   diaz_mansion     : location "You are in Diaz's mansion.";
+}
+
+# Defines things in the world (scenery cannot be carried)
+objects {
+   bat   : object  "a baseball bat" msg="Handy." at = "ocean_beach";
+   guard : scenery "an armed guard"  at = "starfish_isle" msg="Patrolling.";
+}
+   
+connections {
+   ## Connects locations together (bidirectional)
+   from, direction, to = [
+      ocean_beach, north, washington_beach
+      washington_beach, west, starfish_isle,
+      starfish_isle, west, diaz_mansion,
+   ]
+}
+
+barriers {
+   ## Blocks access to mansion whilst Diaz is undefeated (with message)
+   block_mansion : block {
+      location           = diaz_mansion
+      message            = Diaz's mansion is heavily guarded.
+      block_when_exists  = guard
+      show_blocked_exit  = true
+   }
+}
+
+## Print the objective when the game starts
+on_startup {
+   : print "GRAND THEFT AUTO - VICE CITY 2.0" ;
+   : press_any_key ;
+   : clear_screen;
+   : print "DEFEAT DIAZ, AQUIRE HIS MANSION." ;
+   : press_any_key ;
+}
+
+## Execute this every time a player moves or redescribes a location
+on_describe {
+   : if (is_at "diaz_mansion" ) {
+      : print "YOU HAVE DEFEATED DIAZ. THE MANSION IS NOW YOURS!" ;
+      : win_game ;
+   }
+}
+
+## Test VERB NOUN that the player types and executes conditional actions
+on_command {
+   : match "hit guard"  {
+      : if (is_present "guard" && is_carried "bat") {
+         : print   "The guard is knocked out." ;
+      ## : destroy "bat" ;
+         : destroy "guard" ;
+      }
+   }
+}
